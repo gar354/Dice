@@ -20,12 +20,17 @@ double linear_interpolate(double x1, double x2, double weight) {
 
 
 void setup() {
+  size(1000, 1000);
+  diceLength = width / (columns + 3);
+  margin = diceLength / 10;
   totalLength = diceLength + margin;
-  int xSize = totalLength * columns;
-  int ySize = totalLength * (rows + 2);
-  surface.setSize(xSize, ySize);
+  
+  //int xSize = totalLength * columns;
+  //int ySize = totalLength * (rows + 2);
+  
   noLoop();
 }
+
 void draw() {
   background(255);
   int total = 0;
@@ -46,7 +51,6 @@ void draw() {
   text("total:" + total, width / 2, (rows + 1) * totalLength);
   System.out.println(columns * totalLength);
   System.out.println(rows * totalLength);
-
 }
 
 void mousePressed() {
