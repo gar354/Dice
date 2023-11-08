@@ -1,4 +1,4 @@
-class Die //models one single dice cube
+class Die
 {
   int r, g, b, a;
   int sides = 6;
