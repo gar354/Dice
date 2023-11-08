@@ -46,14 +46,14 @@ void draw() {
       diceCube.show();
       total += diceCube.currentSide;
     }
-    System.out.println();
+    println();
   }
   textSize(diceLength);
   fill(0);
   textAlign(CENTER);
   text("total:" + total, width / 2, (rows + 1) * totalLength);
-  System.out.println(columns * totalLength);
-  System.out.println(rows * totalLength);
+  println(columns * totalLength);
+  println(rows * totalLength);
 }
 
 void mousePressed() {

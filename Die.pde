@@ -16,7 +16,7 @@ class Die //models one single dice cube
     currentSide = (int)linear_interpolate((double)1, (double)sides + 1, Math.random());
   }
   void show() {
-    System.out.print(currentSide);
+    print(currentSide);
     fill(255);
     rect(x, y, size, size);
     fill(0);
