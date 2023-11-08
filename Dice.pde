@@ -1,11 +1,12 @@
 // feel free to change these!
 int rows = 10;
 int columns = 10;
-int diceLength = 100;
-int margin = 10;
+float marginPercent = 0.1;
 // dynamic variables
+int diceLength;
 int totalLength;
-
+int margin;
+int centerOffset;
 // substitutions for already available processing functions
 double distance(double x1, double y1, double x2, double y2) {
   double xDiff = x1 - x2;
@@ -20,14 +21,16 @@ double linear_interpolate(double x1, double x2, double weight) {
 
 
 void setup() {
-  size(1000, 1000);
-  diceLength = width / (columns + 3);
-  margin = diceLength / 10;
-  totalLength = diceLength + margin;
-  
-  //int xSize = totalLength * columns;
-  //int ySize = totalLength * (rows + 2);
-  
+  size(600, 600);
+  // aspect ratio handling
+  if (columns >= rows) {
+    totalLength = width / (columns + 2);
+  } else {
+    totalLength = height / (rows + 2);
+  }
+  diceLength = (int)(totalLength * (1 - marginPercent));
+  margin = (int)(totalLength * marginPercent);
+  centerOffset = (width - (totalLength * columns)) / 2;
   noLoop();
 }
 
@@ -37,7 +40,7 @@ void draw() {
   Die diceCube = new Die(0,0, diceLength);
   for (int y = 0; y < rows; y++) { // rows
     for (int x = 0; x < columns; x++) { // columns
-      diceCube.x = x * totalLength + margin / 2;
+      diceCube.x = x * totalLength + centerOffset;
       diceCube.y = y * totalLength + margin / 2;
       diceCube.roll();
       diceCube.show();
